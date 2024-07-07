@@ -65,3 +65,33 @@ export class MockExampleApi extends ExampleApi {
         return await Promise.resolve(result);
     }
 }
+
+export class LocalStorageMock {
+	store: { [key: string]: string };
+  
+	constructor() {
+	  this.store = {};
+	}
+  
+	clear() {
+	  this.store = {};
+	}
+  
+	getItem(key: string) {
+	  return this.store[key] || null;
+	}
+  
+	setItem(key: string, value: string) {
+	  this.store[key] = String(value);
+	}
+  
+	removeItem(key: string) {
+	  delete this.store[key];
+	}
+  
+	key(n: number) {
+	  return Object.keys(this.store)[n];
+	}
+  
+	length: number = 0;
+  }
